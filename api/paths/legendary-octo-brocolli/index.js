@@ -4,7 +4,7 @@ module.exports = function () {
     POST,
     PUT,
     DELETE,
-  };
+  };  
 
   function GET(req, res, next) {
     res.status(200).json([

@@ -1,4 +1,6 @@
 var express = require('express');
+const { initialize } = require('express-openapi');
+const swaggerUi = require('swagger-ui-express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
@@ -25,5 +27,15 @@ initialize({
   apiDoc: require("./api/api-doc"),
   paths: "./api/paths",
 });
+
+app.use(
+  "/api-documentation",
+  swaggerUi.serve,
+  swaggerUi.setup(null, {
+    swaggerOptions: {
+      url: "http://localhost:3030/api-docs",
+    },
+  })
+);
 
 module.exports = app;
