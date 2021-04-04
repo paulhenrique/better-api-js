@@ -17,4 +17,13 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
+app.listen(3030);
+
+// OpenAPI routes
+initialize({
+  app,
+  apiDoc: require("./api/api-doc"),
+  paths: "./api/paths",
+});
+
 module.exports = app;
